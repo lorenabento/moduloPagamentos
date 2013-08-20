@@ -1,0 +1,24 @@
+
+</br></br>
+Alíquotas de INSS
+<table border="1">
+  <tr>
+    <th>Percentual - Empregador </th>
+    <th>Percentual - Empregado</th>
+    <th>Ano Base</th>
+    <th>Ativa</th>
+  </tr>
+
+<% @aliquotas = Aliquotum.find(:all) %>
+  <tr>
+    <th><%= @aliquotas.empregador_perc %></th>
+    <th><%= @aliquotas.empregado_per %></th>
+    <th><%= @aliquotas.ano_base %></th>
+    <th><%= @aliquotas.ativa %></th>	    
+  </tr>
+</table>
+
+</br></br>
+<a HREF="/aliquota">CRUD - Al&iacute;quotas de INSS</a>
+
+

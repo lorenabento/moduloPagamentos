@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  empregador_perc: 1.5
+  empregado_perc: 1.5
+  ano_base: 2013-08-14 08:17:02
+  ativa: false
+  user_at: MyString
+
+two:
+  empregador_perc: 1.5
+  empregado_perc: 1.5
+  ano_base: 2013-08-14 08:17:02
+  ativa: false
+  user_at: MyString

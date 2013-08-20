@@ -1,0 +1,85 @@
+class AliquotasController < ApplicationController
+  
+
+  def index
+	@aliquotas = Aliquota.find :all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @aliquotas }
+    end
+	
+  end
+
+
+  # GET /exemplos/1
+  # GET /exemplos/1.json
+  def show
+    @aliquota = Aliquota.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @aliquota }
+    end
+  end
+
+  # GET /exemplos/new
+  # GET /exemplos/new.json
+  def new
+    @aliquota = Aliquota.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @aliquota }
+    end
+  end
+
+  # GET /exemplos/1/edit
+  def edit
+    @aliquota = Aliquota.find(params[:id])
+  end
+
+  # POST /exemplos
+  # POST /exemplos.json
+  def create
+    @aliquota = Aliquota.new(params[:aliquota])
+
+    respond_to do |format|
+      if @Aliquota.save
+        format.html { redirect_to @aliquota, notice: 'Exemplo was successfully created.' }
+        format.json { render json: @aliquota, status: :created, location: @aliquota }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @aliquota.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /exemplos/1
+  # PUT /exemplos/1.json
+  def update
+    @aliquota = Aliquota.find(params[:id])
+
+    respond_to do |format|
+      if @aliquota.update_attributes(params[:aliquota])
+        format.html { redirect_to @aliquota, notice: 'Exemplo was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @aliquota.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /exemplos/1
+  # DELETE /exemplos/1.json
+  def destroy
+    @aliquota = Aliquota.find(params[:id])
+    @aliquota.destroy
+
+    respond_to do |format|
+      format.html { redirect_to pagamentos_url }
+      format.json { head :no_content }
+    end
+  end
+end

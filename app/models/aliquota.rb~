@@ -1,0 +1,3 @@
+class Aliquota < ActiveRecord::Base
+  attr_accessible :ano_base, :ativa, :empregado_perc, :empregador_perc, :user_at
+end

@@ -1,0 +1,6 @@
+<h1>Editing aliquotum</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @aliquota %> |
+<%= link_to 'Back', aliquota_path %>

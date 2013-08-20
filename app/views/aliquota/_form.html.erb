@@ -1,0 +1,37 @@
+<%= form_for(@aliquotum) do |f| %>
+  <% if @aliquotum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@aliquotum.errors.count, "error") %> prohibited this aliquotum from being saved:</h2>
+
+      <ul>
+      <% @aliquotum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :empregador_perc %><br />
+    <%= f.text_field :empregador_perc %>
+  </div>
+  <div class="field">
+    <%= f.label :empregado_perc %><br />
+    <%= f.text_field :empregado_perc %>
+  </div>
+  <div class="field">
+    <%= f.label :ano_base %><br />
+    <%= f.datetime_select :ano_base %>
+  </div>
+  <div class="field">
+    <%= f.label :ativa %><br />
+    <%= f.check_box :ativa %>
+  </div>
+  <div class="field">
+    <%= f.label :user_at %><br />
+    <%= f.text_field :user_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

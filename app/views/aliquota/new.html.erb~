@@ -1,0 +1,36 @@
+<h3>Alíquotas</h3>
+
+<table border="1">
+  <tr>
+    <th>Empregador perc</th>
+    <th>Empregado perc</th>
+    <th>Ano base</th>
+    <th>Ativa</th>
+  </tr>
+
+<% @aliquota.each do |aliquotum| %>
+ <form action = "aliquota/salvar/<%= aliquotum.id %>">
+  <tr>
+    <td><input type="text" name="empregador_perc" value=<%= aliquotum.empregador_perc %>></td>
+    <td><input type="text" name="empregado_perc" value=<%= aliquotum.empregado_perc %>></td>
+    <td><input type="datetime" name="ano_base" value=<%= aliquotum.ano_base %>></td>
+    <td><%= aliquotum.ativa %></td>
+    <td><%= link_to 'Ativar', action: 'ativar', id: aliquotum.id  %></td>
+    <td><%= link_to 'Excluir', aliquotum, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+    <td><input type="submit" value="Salvar"/></td> 
+  
+  </tr>
+ </form> 
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Inserir', new_aliquotum_path %>
+</br></br>
+<a HREF="/pagamentos">CRUD - Pagamentos</a>
+
+
+
+	
+

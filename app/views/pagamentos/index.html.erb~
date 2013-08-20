@@ -1,0 +1,69 @@
+<h3>Controle de Pagamentos</h3>
+</br>
+
+<table border="1">
+  <tr>
+    <th>User_id</th>
+    <th>Project_id</th>  
+    <th>Valor</th>  
+    <th>INSS Base2</th>
+    <th>INSS Autônomo</th>
+    <th>Valor total*</th>
+    <th>ID - Transação Moip</th>
+    <th>Data Pag Moip</th>
+    <th>Data Pag INSS</th>
+    <th>Ano base - Alíquota</th>
+  </tr>
+
+<% @pagamentos.each do |pagamento| %>
+ <form action = "pagamentos/salvar/<%= pagamento.id %>">
+  <tr>
+     <td><%= pagamento.users_id %></td>
+     <td><%= pagamento.projects_id %></td>
+     <td><%= pagamento.valor_transacao %></td>
+     <td><%= pagamento.inss_base2 %></td> 
+     <td><%= pagamento.inss_autonomo %></td> 
+     <td><%= pagamento.valor_total %></td>
+     <td><input type="text" name="idmoip" value=<%= pagamento.id_transacao_moip %>></td>
+     <td><input type="text" name="datapag" value=<%= pagamento.data_pag_moip %>></td>
+     <td><input type="text" name="datapaginss" value=<%= pagamento.data_pag_inss %>></td>
+     <td><%= pagamento.ano_base %></td>
+     <td><%= link_to 'Calcular ', action: 'calcular', id: pagamento.id  %></td>
+     <td><input type="submit" value="Editar"/></td>
+ </form>  
+  </tr>
+<% end %>
+</table>
+
+
+
+
+</br></br>
+Alíquotas de INSS
+<table border="1">
+  <tr>
+    <th>Percentual - Empregador </th>
+    <th>Percentual - Empregado</th>
+    <th>Ano Base</th>
+    <th>Ativa</th>
+  </tr>
+
+<% @aliquotas = Aliquotum.find_all_by_ativa(true) %>
+<% @aliquotas.each do |aliq| %>
+  <tr>
+    <th><%= aliq.empregador_perc %></th>
+    <th><%= aliq.empregado_perc %></th>
+    <th><%= aliq.ano_base %></th>
+    <th><%= aliq.ativa %></th>	    
+  </tr>
+<% end %>
+</table>
+
+</br></br></br>
+*Valor + Alíquotas 
+
+
+</br></br>
+<a HREF="/aliquota">CRUD - Al&iacute;quotas de INSS</a>
+
+

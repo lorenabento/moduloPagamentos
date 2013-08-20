@@ -1,0 +1,3 @@
+class Aliquotum < ActiveRecord::Base
+  attr_accessible :ativa, :ano_base, :empregado_perc, :empregador_perc, :user_at
+end
