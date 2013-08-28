@@ -16,21 +16,23 @@
     <td><input type="datetime" name="ano_base" value=<%= aliquotum.ano_base %>></td>
     <td><%= aliquotum.ativa %></td>
     <td><%= link_to 'Ativar', action: 'ativar', id: aliquotum.id  %></td>
-    <td><%= link_to 'Excluir',action: 'exluir', id: aliquotum.id %></td> 
+    <td><%= link_to 'Excluir',action: 'excluir', id: aliquotum.id %></td> 
     <td><input type="submit" value="Salvar"/></td> 
   
   </tr>
  </form> 
 <% end %>
 </table>
-
-<br />
-
 <%= link_to 'Inserir', action: :inserir, id: 1 %>
 
 
 </br></br>
-<a HREF="/pagamentos">CRUD - Pagamentos</a>
+<a HREF="/pagamentos">Controle de Pagamentos</a>
+</br>
+</br>
+</br>
+</br>
+<a HREF="/index">Voltar</a>
 
 
 

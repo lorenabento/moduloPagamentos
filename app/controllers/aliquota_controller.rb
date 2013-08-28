@@ -23,37 +23,12 @@ class AliquotaController < ApplicationController
     end
   end
 
-  # GET /aliquota/new
-  # GET /aliquota/new.json
-  def new
-    @aliquotum = Aliquotum.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @aliquotum }
-    end
-  end
-
+ 
   # GET /aliquota/1/edit
   def edit
     @aliquotum = Aliquotum.find(params[:id])
   end
 
-  # POST /aliquota
-  # POST /aliquota.json
-  def create
-    @aliquotum = Aliquotum.new(params[:aliquotum])
-
-    respond_to do |format|
-      if @aliquotum.save
-        format.html { redirect_to @aliquotum, notice: 'Aliquotum was successfully created.' }
-        format.json { render json: @aliquotum, status: :created, location: @aliquotum }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @aliquotum.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # PUT /aliquota/1
   # PUT /aliquota/1.json
@@ -127,7 +102,7 @@ class AliquotaController < ApplicationController
 
 
   def ativar   
-    #apenas ativa se o registro possue todos os campos preenchidos
+    #ativar apenas se os campos: empregado_perc e empregador_perc estiverem preenchidos
     @aliquotum = Aliquotum.find(params[:id])
     if(@aliquotum.empregado_perc.blank?)
 	# não ativa
@@ -141,7 +116,7 @@ class AliquotaController < ApplicationController
         @maxId = @maxId.id    
         #seta o campo "ativo" de todos os registros para false
         for i in 1..@maxId do 
-          #checa se o registro existe
+            #checa se o registro existe
             if(Aliquotum.where(id: i).blank?)
               
             else 
@@ -151,7 +126,7 @@ class AliquotaController < ApplicationController
             end
         end
    
-        #seta o registro com id recebido para true
+        #seta o campo: ativa do registro corrente
         @aliquotum = Aliquotum.find(params[:id])
         @aliquotum.ativa = true
         @aliquotum.update_attributes(params[:aliquotum])
@@ -166,17 +141,16 @@ class AliquotaController < ApplicationController
   def excluir
     @aliquotum = Aliquotum.find(params[:id])
 
-    #permite deletar quando existir no minimo dois registros na tabela
+    #deleta apenas se exister pelo menos dois registros
     if(Aliquotum.count >= 2)
       @aliquotum = Aliquotum.find(params[:id])
       @aliquotum.destroy
     else
-        #??exibi mensagem na tela informando que é preciso ter ao menos um registro 
+        #???exibi mensagem na tela informando que é preciso ter ao menos um registro 
     end
 
-    #garante que exista pelo menos uma aliquota ativa 
-    #última id válida
-    @maxId = Aliquotum.last
+    #garante que exista pelo menos um registro ativo 
+    @maxId = Aliquotum.last #última id válida
     @aliquotum = Aliquotum.find(@maxId)
     @aliquotum.ativa = true
     @aliquotum.update_attributes(params[:aliquotum])

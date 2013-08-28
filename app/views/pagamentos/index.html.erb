@@ -1,10 +1,23 @@
 <h3>Controle de Pagamentos</h3>
 </br>
 
+Filtrar por projeto:
+
+<form action = "pagamentos/pesquisarprojeto/$opselect" >
+<%= select_tag(:idproject, options_for_select( Project.find(:all).map{|proj| [proj.name, proj.id]}, { :selected => $opselect})) %> 
+<!-- params[:idproject]  -->
+<td><input type="submit" value="Pesquisar"/></td>
+</form>
+
+ID project: <%= $opselect %>
+</br>
+
+</br>
 <table border="1">
   <tr>
     <th>User_id</th>
-    <th>Project_id</th>  
+    <th>Project_id</th> 
+    <th>Release_id</th>  
     <th>Valor</th>  
     <th>INSS Base2</th>
     <th>INSS Autônomo</th>
@@ -15,11 +28,13 @@
     <th>Ano base - Alíquota</th>
   </tr>
 
+<% @pagamentos = Pagamentos_teste.where(:projects_id => $opselect).order(:users_id) %>
 <% @pagamentos.each do |pagamento| %>
  <form action = "pagamentos/salvar/<%= pagamento.id %>">
   <tr>
      <td><%= pagamento.users_id %></td>
      <td><%= pagamento.projects_id %></td>
+     <td><%= pagamento.release_id %></td>
      <td><%= pagamento.valor_transacao %></td>
      <td><%= pagamento.inss_base2 %></td> 
      <td><%= pagamento.inss_autonomo %></td> 
@@ -29,13 +44,13 @@
      <td><input type="text" name="datapaginss" value=<%= pagamento.data_pag_inss %>></td>
      <td><%= pagamento.ano_base_aliq %></td>
      <td><%= link_to 'Calcular ', action: 'calcular', id: pagamento.id  %></td>
-     <td><input type="submit" value="Editar"/></td>
+     <td><input type="submit" value="Salvar"/></td>
  </form>  
   </tr>
 <% end %>
 </table>
-
-
+* Valor + Alíquotas 
+</br></br>
 
 
 </br></br>
@@ -59,11 +74,14 @@ Alíquotas de INSS
 <% end %>
 </table>
 
-</br></br></br>
-*Valor + Alíquotas 
+
 
 
 </br></br>
 <a HREF="/aliquota">CRUD - Al&iacute;quotas de INSS</a>
-
+</br>
+</br>
+</br>
+</br>
+<a HREF="/index">Voltar</a>
 

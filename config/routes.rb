@@ -3,6 +3,9 @@ ModuloPagamentos::Application.routes.draw do
   resources :aliquota
   resources :exemplos
   resources :pagamentos
+  resources :issues
+  resources :releases
+  resources :projects  
 
 get "home/index"
 

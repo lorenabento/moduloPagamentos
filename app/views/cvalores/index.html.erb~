@@ -1,0 +1,40 @@
+</br>
+Teste - Tabela de Pagamentos
+</br>
+<table border="1">
+  <tr>
+    <th>id</th>
+    <th>User_id</th>
+    <th>Project_id</th> 
+    <th>Release_id</th> 
+    <th>Valor</th>  
+    <th>INSS Base2</th>
+    <th>INSS Autônomo</th>
+    <th>Valor total</th>
+    <th>ID - Transação Moip</th>
+    <th>Data Pag Moip</th>
+    <th>Data Pag INSS</th>
+    <th>Ano base - Alíquota</th>
+  </tr>
+
+<% @pagamentos.each do |pagteste| %>
+  <tr>
+     <td><%= pagteste.id %></td>
+     <td><%= pagteste.users_id %></td>
+     <td><%= pagteste.projects_id %></td>
+     <td><%= pagteste.release_id %></td>
+     <td><%= pagteste.valor_transacao %></td>
+     <td><%= pagteste.inss_base2 %></td> 
+     <td><%= pagteste.inss_autonomo %></td> 
+     <td><%= pagteste.valor_total %></td>
+     <td><%= pagteste.id_transacao_moip %></td>
+     <td><%= pagteste.data_pag_moip %></td>
+     <td><%= pagteste.data_pag_inss %></td>
+     <td><%= pagteste.ano_base_aliq %></td>
+  </tr>
+<% end %>
+</table>
+
+</br></br>
+<td><%= link_to 'Gerar dados', action: 'popular', id: 1  %></td>
+
