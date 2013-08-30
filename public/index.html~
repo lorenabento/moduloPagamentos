@@ -1,6 +1,9 @@
-<a HREF="/pagamentos">CRUD - Pagamentos</a> 
+<a HREF="/pagamento">Controle de Pagamentos</a> 
 
 </br>
 </br>
-<a HREF="/pagamentos">CRUD - Al&iacute;quotas de INSS</a> 
+<a HREF="/aliquota">CRUD - Al&iacute;quotas de INSS</a> 
+</br>
+</br>
+<a HREF="/cvalores">Gerar Tabela</a>
 

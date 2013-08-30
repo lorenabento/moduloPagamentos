@@ -1,14 +1,33 @@
 ModuloPagamentos::Application.routes.draw do
 
+  resources :pagamento
   resources :aliquota
-  resources :exemplos
-  resources :pagamentos
   resources :issues
-  resources :releases
-  resources :projects  
+  
+  # página inicial
+  get "home/index"
+  
+ 
 
-get "home/index"
+  resources :pagamento do
+    member do
+      get 'calcular'
+      get 'salvar'
+    end
+  end
+  
+  #match 'pagamento/salvar:id'
+  
+  resources :aliquota do
+    member do
+      get 'ativar'
+      get 'excluir'
+      get 'inserir'
+      get 'salvar'
+    end
+  end
 
+  #match 'salvar/:id' 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -57,13 +76,11 @@ get "home/index"
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-   root :to => 'home#index'
+  
 
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-   match ':controller(/:action(/:id))(.:format)'
+  # match ':controller(/:action(/:id))(.:format)'
 end

@@ -7,7 +7,7 @@ class CvaloresController < ApplicationController
         @releases = Release.find :all
         @projects = Project.find :all
         @users = User.find :all
-        @pagteste = Pagamentos_teste.find :all
+        @pagamentos = Pagamento.find :all
  
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +24,7 @@ class CvaloresController < ApplicationController
      # qtd de registros na tabela issues
      @qtdIssues = Issue.count
      for i in 1..@qtdIssues do
-        # verifica se existe na tabela registro com id = i
+        # verifica se existe na tabela registro com id = i - evitar erro
             if(Issue.where(id: i).blank?)
                break
             end	
@@ -34,7 +34,7 @@ class CvaloresController < ApplicationController
 	# pega a release referente
         @idRelease = @issues.release_id
         
-        @pags = Pagamentos_teste.find_all_by_users_id(@issues.author_id)
+        @pags = Pagamento.find_all_by_users_id(@issues.author_id)
 	# pesquisa na tabela pagamentos se já existe registro com mesmo id
            if(@pags.count == 0)
                # não existe registro
@@ -42,7 +42,7 @@ class CvaloresController < ApplicationController
                
                if(@issues.status_id == 5) # aprovada
                 # adiciona registro do usuário na tabela pagamentos
-               	 @pagteste02 = Pagamentos_teste.new
+               	 @pagteste02 = Pagamento.new
                  @pagteste02.users_id = @issues.author_id
 	         @pagteste02.release_id = @issues.release_id
                  @pagteste02.valor_transacao = @valor
@@ -65,7 +65,7 @@ class CvaloresController < ApplicationController
                #flagR: false, grava novo registro na tabela
                if(@flagR == false)
                   if(@issues.status_id == 5) # aprovada 
-                    @pagteste02 = Pagamentos_teste.new
+                    @pagteste02 = Pagamento.new
                     @pagteste02.users_id = @issues.author_id
 	            @pagteste02.release_id = @issues.release_id
                     @pagteste02.valor_transacao = valorBug(@issues.type_id)
@@ -79,7 +79,7 @@ class CvaloresController < ApplicationController
                #flagR: true, faz a soma dos valores das releases
                else 
                   #encontra o usuario com o id procurado e a mesma release
-                  @pags = Pagamentos_teste.find_all_by_users_id(@issues.author_id)
+                  @pags = Pagamento.find_all_by_users_id(@issues.author_id)
                   @pags.each do |pags|
                     
                     if(pags.release_id == @issues.release_id and @issues.status_id == 5)

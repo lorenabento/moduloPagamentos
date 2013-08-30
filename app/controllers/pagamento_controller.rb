@@ -1,16 +1,16 @@
-class PagamentosController < ApplicationController
+class PagamentoController < ApplicationController
   
   #variavel global - opção de projeto
   $opselect = 1
 
   def index
-	@pagamentos = Pagamento.find :all 
+	@pagamento = Pagamento.find :all 
 	@aliquotas = Aliquotum.find :all
 	@projects = Project.find :all
   
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @pagamentos }
+      format.json { render json: @pagamento }
     end
 	
   end
@@ -29,11 +29,11 @@ class PagamentosController < ApplicationController
 
   # DELETE /exemplos/1.json
   def destroy
-    @pagamento = Pagamentos.find(params[:id])
+    @pagamento = Pagamento.find(params[:id])
     @pagamento.destroy
     
     respond_to do |format|
-      format.html { redirect_to pagamentos_url }
+      format.html { redirect_to pagamento_url }
       format.json { head :no_content }
     end
   end
@@ -42,7 +42,7 @@ class PagamentosController < ApplicationController
   # GET /exemplos/1
   # GET /exemplos/1.json
   def salvar
-    @pagamento = Pagamentos.find(params[:id])
+    @pagamento = Pagamento.find(params[:id])
     # valores recebidos por parâmetro
     @pagamento.id_transacao_moip = params[:idmoip]
     @pagamento.data_pag_moip = params[:datapag]
@@ -79,7 +79,7 @@ class PagamentosController < ApplicationController
 	end
 
     # id do pagamento a ser calculado
-    @pagamento = Pagamentos.find(params[:id])
+    @pagamento = Pagamento.find(params[:id])
     
     # cálculos dos valores referentes ao inss ativo
     @inss_autonomo = @pagamento.valor_transacao * @empregado_perc/100

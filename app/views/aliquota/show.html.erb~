@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Empregador perc:</b>
+  <%= @aliquotum.empregador_perc %>
+</p>
+
+<p>
+  <b>Empregado perc:</b>
+  <%= @aliquotum.empregado_perc %>
+</p>
+
+<p>
+  <b>Ano base:</b>
+  <%= @aliquotum.ano_base %>
+</p>
+
+<p>
+  <b>Ativa:</b>
+  <%= @aliquotum.ativa %>
+</p>
+
+<p>
+  <b>User at:</b>
+  <%= @aliquotum.user_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_aliquotum_path(@aliquotum) %> |
+<%= link_to 'Back', aliquota_path %>
