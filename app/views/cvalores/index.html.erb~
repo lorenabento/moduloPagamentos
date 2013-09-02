@@ -18,7 +18,7 @@ Teste - Tabela de Pagamentos
     <th>Ano base - Alíquota</th>
   </tr>
 
-<% @pagteste.each do |pagteste| %>
+<% @pagamentos.each do |pagteste| %>
   <tr>
      <td><%= pagteste.id %></td>
      <td><%= pagteste.temp %></td>

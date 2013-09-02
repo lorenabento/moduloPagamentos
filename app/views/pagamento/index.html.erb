@@ -3,7 +3,7 @@
 
 Filtrar por projeto:
 
-<form action = "pagamento/pesquisarprojeto/$opselect" >
+<form action = "pagamento/$opselect/pesquisarprojeto/" >
 <%= select_tag(:idproject, options_for_select( Project.find(:all).map{|proj| [proj.name, proj.id]}, { :selected => $opselect})) %> 
 <!-- params[:idproject]  -->
 <td><input type="submit" value="Pesquisar"/></td>

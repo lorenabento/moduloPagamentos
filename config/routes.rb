@@ -8,11 +8,11 @@ ModuloPagamentos::Application.routes.draw do
   get "home/index"
   
  
-
   resources :pagamento do
     member do
       get 'calcular'
       get 'salvar'
+      get 'pesquisarprojeto'
     end
   end
   
@@ -24,6 +24,12 @@ ModuloPagamentos::Application.routes.draw do
       get 'excluir'
       get 'inserir'
       get 'salvar'
+    end
+  end
+
+   resources :cvalores do
+    member do
+      get 'popular'
     end
   end
 
