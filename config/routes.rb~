@@ -1,9 +1,5 @@
 ModuloPagamentos::Application.routes.draw do
 
-  resources :pagamento
-  resources :aliquota
-  resources :issues
-  
   # página inicial
   get "home/index"
   
@@ -12,6 +8,7 @@ ModuloPagamentos::Application.routes.draw do
     member do
       get 'calcular'
       get 'salvar'
+      get 'pesquisarprojeto'
     end
   end
   
