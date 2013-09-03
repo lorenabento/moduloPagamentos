@@ -65,7 +65,10 @@ class AliquotaController < ApplicationController
  
     @aliquotum.empregador_perc = params[:empregador_perc]
     @aliquotum.empregado_perc = params[:empregado_perc]
-    @aliquotum.ano_base = params[:ano_base]
+
+
+    data = params[:ano_base]
+    @aliquotum.ano_base = data
 
     @aliquotum.update_attributes(params[:aliquotum])
 
@@ -74,6 +77,7 @@ class AliquotaController < ApplicationController
     end
   end
 
+  
   def inserir
     #apenas insere se o último registro tiver todos os seus campos preenchidos
     @aliquotum = Aliquotum.last
@@ -136,6 +140,13 @@ class AliquotaController < ApplicationController
     end
   end
 
+
+   def ordemData(data)
+   # padrão bd: aaaa-mm-dd
+      @data = data
+      return @data
+   
+   end 
 
 
   def excluir
