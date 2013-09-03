@@ -4,15 +4,14 @@ class PagamentoController < ApplicationController
   $opselect = 1
 
   def index
-	@pagamento = Pagamento.find :all 
-	@aliquotas = Aliquotum.find :all
-	@projects = Project.find :all
+    @pagamento = Pagamento.find :all 
+    @aliquotas = Aliquotum.find :all
+    @projects = Project.find :all
   
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pagamento }
     end
-	
   end
 
 
@@ -57,12 +56,11 @@ class PagamentoController < ApplicationController
 
 
   def pesquisarprojeto
-   #registro com o id do projeto selecionado
-   @project = Project.find(params[:idproject])
+    #registro com o id do projeto selecionado
+    @project = Project.find(params[:idproject])
 
-   $opselect = @project.id
-
-   respond_to do |format|
+    $opselect = @project.id
+    respond_to do |format|
       format.html { redirect_to action: :index }
     end
   end
@@ -72,11 +70,11 @@ class PagamentoController < ApplicationController
     # alíquota ativa
     @aliquota = Aliquotum.find_all_by_ativa(true)
 
-    	@aliquota.each do |aliq|
-           @empregado_perc = aliq.empregado_perc
-           @empregador_perc = aliq.empregador_perc	
-           @ali_anobase = aliq.ano_base	
-	end
+    @aliquota.each do |aliq|
+      @empregado_perc = aliq.empregado_perc
+      @empregador_perc = aliq.empregador_perc	
+      @ali_anobase = aliq.ano_base	
+    end
 
     # id do pagamento a ser calculado
     @pagamento = Pagamento.find(params[:id])

@@ -1,4 +1,3 @@
-
 class Pagamento < ActiveRecord::Base    
 	
 attr_accessible :id

@@ -86,16 +86,16 @@ class AliquotaController < ApplicationController
     elsif(@aliquotum.empregador_perc.blank?)
 	# não insere
     else
-    	@aliquotum = Aliquotum.new
+      @aliquotum = Aliquotum.new
 
-        #id do último registro
-        @maxId = Aliquotum.last
-        @maxId = @maxId.id 
+      #id do último registro
+      @maxId = Aliquotum.last
+      @maxId = @maxId.id 
 
-        @aliquotum.id = @maxId+1
-        @aliquotum.ativa = false
+      @aliquotum.id = @maxId+1
+      @aliquotum.ativa = false
 
-        @aliquotum.update_attributes(params[:aliquotum]) 
+      @aliquotum.update_attributes(params[:aliquotum]) 
     end
      
     respond_to do |format|
@@ -109,44 +109,36 @@ class AliquotaController < ApplicationController
     #ativar apenas se os campos: empregado_perc e empregador_perc estiverem preenchidos
     @aliquotum = Aliquotum.find(params[:id])
     if(@aliquotum.empregado_perc.blank?)
-	# não ativa
+      # não ativa
     elsif(@aliquotum.empregador_perc.blank?)
-	# não ativa
+      # não ativa
     else
-        #qtd de registros
-        @qtd = Aliquotum.count
-        #última id válida
-        @maxId = Aliquotum.last
-        @maxId = @maxId.id    
-        #seta o campo "ativo" de todos os registros para false
-        for i in 1..@maxId do 
-            #checa se o registro existe
-            if(Aliquotum.where(id: i).blank?)
-              
-            else 
-              @aliquotum = Aliquotum.find(i)
-              @aliquotum.ativa = false
-              @aliquotum.update_attributes(params[:aliquotum])
-            end
+      #qtd de registros
+      @qtd = Aliquotum.count
+      #última id válida
+      @maxId = Aliquotum.last
+      @maxId = @maxId.id    
+      #seta o campo "ativo" de todos os registros para false
+      for i in 1..@maxId do 
+        #checa se o registro existe
+        if(Aliquotum.where(id: i).blank?)
+           
+        else 
+          @aliquotum = Aliquotum.find(i)
+          @aliquotum.ativa = false
+          @aliquotum.update_attributes(params[:aliquotum])
         end
+      end #fim loop
    
         #seta o campo: ativa do registro corrente
         @aliquotum = Aliquotum.find(params[:id])
         @aliquotum.ativa = true
         @aliquotum.update_attributes(params[:aliquotum])
-    end
+    end # fim if
     respond_to do |format|
       format.html { redirect_to action: :index }
     end
   end
-
-
-   def ordemData(data)
-   # padrão bd: aaaa-mm-dd
-      @data = data
-      return @data
-   
-   end 
 
 
   def excluir
