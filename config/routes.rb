@@ -1,7 +1,8 @@
 ModuloPagamentos::Application.routes.draw do
 
   # página inicial
-  get "home/index"
+  root :to => 'welcome#index'
+  #get "home/index"
   
  
   resources :pagamento do
