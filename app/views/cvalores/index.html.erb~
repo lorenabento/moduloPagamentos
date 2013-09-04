@@ -4,7 +4,6 @@ Teste - Tabela de Pagamentos
 <table border="1">
   <tr>
     <th>id</th>
-    <th>temp</th>
     <th>User_id</th>
     <th>Project_id</th> 
     <th>Release_id</th> 
@@ -21,7 +20,6 @@ Teste - Tabela de Pagamentos
 <% @pagamentos.each do |pagteste| %>
   <tr>
      <td><%= pagteste.id %></td>
-     <td><%= pagteste.temp %></td>
      <td><%= pagteste.users_id %></td>
      <td><%= pagteste.projects_id %></td>
      <td><%= pagteste.release_id %></td>
@@ -39,4 +37,7 @@ Teste - Tabela de Pagamentos
 
 </br></br>
 <td><%= link_to 'Gerar dados', action: 'popular', id: 1  %></td>
+
+</br></br>
+<%= link_to 'Voltar', action: :index,  :controller=> "welcome" %>
 

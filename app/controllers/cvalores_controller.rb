@@ -37,11 +37,11 @@ class CvaloresController < ApplicationController
         
       @pags = Pagamento.find_all_by_users_id(@issues.author_id)
       # pesquisa na tabela pagamentos se já existe registro com mesmo id
-      if(@pags.count == 0)
+      if @pags.count == 0 
         # não existe registro
         @valor = valorBug(@issues.type_id)            
              
-        if(@issues.status_id == 5) # aprovada
+        if @issues.status_id == 5 # aprovada
           # adiciona registro do usuário na tabela pagamentos
           @pagteste02 = Pagamento.new
           @pagteste02.users_id = @issues.author_id
@@ -58,14 +58,14 @@ class CvaloresController < ApplicationController
 	    @flagR = false# true: existe usuário com mesma release corrente
                           # false: existe registro de usuário, mas não existe registro relacionado a release corrente 
             @pags.each do |pags|
-              if(pags.release_id == @issues.release_id)
+              if pags.release_id == @issues.release_id
                  @flagR = true
                    break
               end
            end
            #flagR: false, grava novo registro na tabela
-             if(@flagR == false)
-               if(@issues.status_id == 5) # aprovada 
+             if @flagR == false
+               if @issues.status_id == 5 # aprovada 
                  @pagteste02 = Pagamento.new
                  @pagteste02.users_id = @issues.author_id
 	         @pagteste02.release_id = @issues.release_id
@@ -83,7 +83,7 @@ class CvaloresController < ApplicationController
                 @pags = Pagamento.find_all_by_users_id(@issues.author_id)
                 @pags.each do |pags|
                     
-                if(pags.release_id == @issues.release_id and @issues.status_id == 5)
+                if pags.release_id == @issues.release_id && @issues.status_id == 5
                   @typeBug = @issues.type_id
                   @valor = valorBug(@issues.type_id)
                   pags.valor_total = pags.valor_total + @valor
@@ -106,19 +106,19 @@ class CvaloresController < ApplicationController
   def valorBug(typeBug)
     @typeBug = typeBug
     valor = 0
-    if(@typeBug == 1)
+    if @typeBug == 1
       valor = 4.0
-    elsif(@typeBug == 2)
+    elsif @typeBug == 2
       valor = 2.50
-    elsif(@typeBug == 3) 
+    elsif @typeBug == 3
       valor = 10.0
-    elsif(@typeBug == 4)
+    elsif @typeBug == 4
       valor = 10.0
-    elsif(@typeBug == 5)
+    elsif @typeBug == 5
       valor = 20.0
-    elsif(@typeBug == 6)
+    elsif @typeBug == 6
       valor = 20.0
-    elsif(@typeBug == 7)
+    elsif @typeBug == 7
       valor = 1.0
     end
     valor # retorna o valor da variável

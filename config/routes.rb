@@ -3,7 +3,8 @@ ModuloPagamentos::Application.routes.draw do
   # página inicial
   root :to => 'welcome#index'
   #get "home/index"
-  
+   
+  resources :diagramas  
  
   resources :pagamento do
     member do

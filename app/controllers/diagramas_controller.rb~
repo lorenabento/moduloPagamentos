@@ -1,0 +1,8 @@
+class DiagramasController < ApplicationController
+
+  def index
+  
+  end
+
+
+end

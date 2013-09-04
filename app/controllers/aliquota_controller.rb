@@ -81,9 +81,9 @@ class AliquotaController < ApplicationController
   def inserir
     #apenas insere se o último registro tiver todos os seus campos preenchidos
     @aliquotum = Aliquotum.last
-    if(@aliquotum.empregado_perc.blank?)
+    if @aliquotum.empregado_perc.blank?
 	# não insere
-    elsif(@aliquotum.empregador_perc.blank?)
+    elsif @aliquotum.empregador_perc.blank?
 	# não insere
     else
       @aliquotum = Aliquotum.new
@@ -108,9 +108,9 @@ class AliquotaController < ApplicationController
   def ativar   
     #ativar apenas se os campos: empregado_perc e empregador_perc estiverem preenchidos
     @aliquotum = Aliquotum.find(params[:id])
-    if(@aliquotum.empregado_perc.blank?)
+    if @aliquotum.empregado_perc.blank?
       # não ativa
-    elsif(@aliquotum.empregador_perc.blank?)
+    elsif @aliquotum.empregador_perc.blank?
       # não ativa
     else
       #qtd de registros
@@ -121,8 +121,8 @@ class AliquotaController < ApplicationController
       #seta o campo "ativo" de todos os registros para false
       for i in 1..@maxId do 
         #checa se o registro existe
-        if(Aliquotum.where(id: i).blank?)
-           
+        if Aliquotum.where(id: i).blank?
+            # evita erros
         else 
           @aliquotum = Aliquotum.find(i)
           @aliquotum.ativa = false
@@ -145,7 +145,7 @@ class AliquotaController < ApplicationController
     @aliquotum = Aliquotum.find(params[:id])
 
     #deleta apenas se exister pelo menos dois registros
-    if(Aliquotum.count >= 2)
+    if Aliquotum.count >= 2
       @aliquotum = Aliquotum.find(params[:id])
       @aliquotum.destroy
     else
