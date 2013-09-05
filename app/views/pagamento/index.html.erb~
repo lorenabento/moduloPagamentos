@@ -28,8 +28,8 @@ ID project: <%= $opselect %>
     <th>Ano base - Alíquota</th>
   </tr>
 
-<% @pagamentos = Pagamento.where(:projects_id => $opselect).order(:users_id) %>
-<% @pagamentos.each do |pagamento| %>
+
+<% @pagamento.each do |pagamento| %>
  <form action = "pagamento/<%= pagamento.id %>/salvar/">
   <tr>
      <td><%= pagamento.users_id %></td>
@@ -48,7 +48,7 @@ ID project: <%= $opselect %>
  </form>  
   </tr>
 <% end %>
-</table>
+</table><%= will_paginate @pagamentos %>
 * Valor + Alíquotas 
 </br></br>
 
@@ -76,12 +76,11 @@ Alíquotas de INSS
 
 
 
-
 </br></br>
 <a HREF="/aliquota">CRUD - Al&iacute;quotas de INSS</a>
 </br>
 </br>
 </br>
 </br>
-<a HREF="/index">Voltar</a>
+<%= link_to 'Voltar', action: :index,  :controller=> "welcome" %>
 

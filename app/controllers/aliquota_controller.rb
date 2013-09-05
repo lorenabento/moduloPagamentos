@@ -143,9 +143,14 @@ class AliquotaController < ApplicationController
 
   def excluir
     @aliquotum = Aliquotum.find(params[:id])
+    @aliquotumLast = Aliquotum.last  
 
     #deleta apenas se exister pelo menos dois registros
-    if Aliquotum.count >= 2
+    if Aliquotum.count > 2     
+      @aliquotum = Aliquotum.find(params[:id])
+      @aliquotum.destroy
+    #garante que o registro ativo tenha todos os campos preenchidos - Correção do erro: ao excluir um registro ativo, um registro com campos em branco é setado para ativo
+    elsif Aliquotum.count == 2 && !@aliquotumLast.empregado_perc.nil?
       @aliquotum = Aliquotum.find(params[:id])
       @aliquotum.destroy
     else
@@ -153,10 +158,13 @@ class AliquotaController < ApplicationController
     end
 
     #garante que exista pelo menos um registro ativo 
-    @maxId = Aliquotum.last #última id válida
-    @aliquotum = Aliquotum.find(@maxId)
+    #@maxId = Aliquotum.last #última id válida
+    @aliquotum = Aliquotum.first
     @aliquotum.ativa = true
     @aliquotum.update_attributes(params[:aliquotum])
+
+    
+    
 
     respond_to do |format|
         format.html { redirect_to action: :index }

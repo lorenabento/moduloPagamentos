@@ -15,11 +15,11 @@
 <b>Diagramas</b></br>
 Sequ&ecirc;ncia</br>
 <ul>
-  <li><%= link_to 'Cadastro de usuários', action: :index, id: 1, :controller=>"diagramas" %></li>
-  <li><%= link_to 'Registro de ocorrências', action: :index, id: 2, :controller=>"diagramas" %></li>
+  <li><%= link_to 'Cadastro de usuários', action: :index, id: 1, :controller=> "diagramas" %></li>
+  <li><%= link_to 'Registro de ocorrências', action: :index, id: 2, :controller=> "diagramas" %></li>
 </ul>
 </br>
-<%= link_to 'Componentes', action: :index, id: 3, :controller=>"diagramas" %>
+<%= link_to 'Componentes', action: :index, id: 3, :controller=> "diagramas" %>
 </body>
 </html>
 

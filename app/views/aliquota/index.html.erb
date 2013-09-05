@@ -8,6 +8,8 @@
     <th>Ativa</th>
   </tr>
 
+
+
 <% @aliquota.each do |aliquotum| %>
  <form action = "aliquota/<%= aliquotum.id %>/salvar/">
   <tr>
@@ -23,6 +25,7 @@
  </form> 
 <% end %>
 </table>
+
 <%= link_to 'Inserir', action: :inserir, id: 1 %>
 
 

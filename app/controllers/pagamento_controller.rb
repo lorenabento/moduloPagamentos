@@ -4,10 +4,11 @@ class PagamentoController < ApplicationController
   $opselect = 1
 
   def index
-    @pagamento = Pagamento.find :all 
+    #@pagamento = Pagamento.find :all 
     @aliquotas = Aliquotum.find :all
-    @projects = Project.find :all
-  
+    @projects = Project.find :all  
+    @pagamento = Pagamento.where(:projects_id => $opselect).order(:users_id).paginate(:page => params[:page], :per_page => 10)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pagamento }
