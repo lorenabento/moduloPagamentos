@@ -4,6 +4,13 @@ class AliquotaController < ApplicationController
   # GET /aliquota
   # GET /aliquota.json
   def index
+   flash[:notice] = "Informações salvas com sucesso."
+flash[:warning] = "Preencha todos os campos obrigatórios."
+flash[:error] = "Não foi possível salvar as informações."
+flash[:info] = "Você tem mensagens não visualizadas."
+
+
+
     @aliquota = Aliquotum.all
 
     respond_to do |format|
@@ -149,6 +156,7 @@ class AliquotaController < ApplicationController
     if Aliquotum.count > 2     
       @aliquotum = Aliquotum.find(params[:id])
       @aliquotum.destroy
+    #garante que o registro ativo tenha todos os campos preenchidos - Correção do erro: ao excluir um registro ativo, um registro com campos em branco é setado para ativo
     elsif Aliquotum.count == 2 && !@aliquotumLast.empregado_perc.nil?
       @aliquotum = Aliquotum.find(params[:id])
       @aliquotum.destroy
@@ -162,7 +170,7 @@ class AliquotaController < ApplicationController
     @aliquotum.ativa = true
     @aliquotum.update_attributes(params[:aliquotum])
 
-    #garante que o registro ativo tenha todos os campos preenchidos - Correção do erro: ao excluir um registro ativo, um registro com campos em branco é setado para ativo
+    
     
 
     respond_to do |format|

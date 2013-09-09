@@ -5,7 +5,7 @@ Teste - Tabela de Pagamentos
   <tr>
     <th>id</th>
     <th>User_id</th>
-    <th>Project_id</th> 
+    <th>Projeto</th> 
     <th>Release_id</th> 
     <th>Valor</th>  
     <th>INSS Base2</th>

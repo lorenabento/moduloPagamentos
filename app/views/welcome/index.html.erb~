@@ -1,3 +1,5 @@
+<%= render 'layouts/topbar', :display_logo => logged_in? %>
+
 <html>
 <head>
 <title>Menu</title>

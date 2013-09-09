@@ -15,8 +15,8 @@
   <tr>
     <td><input type="text" name="empregador_perc" value=<%= aliquotum.empregador_perc %>></td>
     <td><input type="text" name="empregado_perc" value=<%= aliquotum.empregado_perc %>></td>
-    <td><input type="datetime" name="ano_base" value=<%= aliquotum.ano_base %>></td>
-    <td><%= aliquotum.ativa %></td>
+    <td><input type="datetime" name="ano_base" value=<%= data_formatada(aliquotum.ano_base) %>></td>
+    <td><%= yes_or_no?(aliquotum.ativa) %></td>
     <td><%= link_to 'Ativar', action: 'ativar', id: aliquotum.id  %></td>
     <td><%= link_to 'Excluir',action: 'excluir', id: aliquotum.id %></td> 
     <td><input type="submit" value="Salvar"/></td> 
