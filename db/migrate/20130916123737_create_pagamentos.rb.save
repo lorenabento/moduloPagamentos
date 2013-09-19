@@ -1,0 +1,12 @@
+class CreatePagamentos < ActiveRecord::Migration
+  def change
+    create_table :pagamentos, :id => false do |t|
+      t.integer :projects_id
+      t.integer :users_id
+      
+
+
+      t.timestamps
+    end
+  end
+end

@@ -1,9 +1,8 @@
 </br>
-Teste - Tabela de Pagamentos
+Tabela de Pagamentos
 </br>
 <table border="1">
   <tr>
-    <th>id</th>
     <th>User_id</th>
     <th>Project_id</th> 
     <th>Release_id</th> 
@@ -19,14 +18,13 @@ Teste - Tabela de Pagamentos
 
 <% @pagamentos.each do |pagteste| %>
   <tr>
-     <td><%= pagteste.id %></td>
      <td><%= pagteste.users_id %></td>
      <td><%= pagteste.projects_id %></td>
-     <td><%= pagteste.release_id %></td>
+     <td><%= pagteste.releases_id %></td>
      <td><%= pagteste.valor_transacao %></td>
      <td><%= pagteste.inss_base2 %></td> 
      <td><%= pagteste.inss_autonomo %></td> 
-     <td><%= pagteste.valor_total %></td>
+     <td><%= pagteste.valor %></td>
      <td><%= pagteste.id_transacao_moip %></td>
      <td><%= pagteste.data_pag_moip %></td>
      <td><%= pagteste.data_pag_inss %></td>

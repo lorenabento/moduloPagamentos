@@ -1,7 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# coding: utf-8
+
+
+puts 'Alíquotas...'
+Aliquotum.create(:empregador_perc => '2.0', :empregado_perc => '1.0', :ano_base => '2012-01-01', :ativa => '1')
+Aliquotum.create(:empregador_perc => '3.0', :empregado_perc => '2.0', :ano_base => '2013-01-01', :ativa => '0')

@@ -88,7 +88,7 @@ class PagamentoController < ApplicationController
     @pagamento.inss_base2 = @inss_base2
     
     # valor total
-    @pagamento.valor_total = @pagamento.valor_transacao + @pagamento.inss_autonomo + @pagamento.inss_base2
+    @pagamento.valor = @pagamento.valor_transacao + @pagamento.inss_autonomo + @pagamento.inss_base2
 
     # ano base do cálculo
     @pagamento.ano_base_aliq = @ali_anobase    

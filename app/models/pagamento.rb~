@@ -9,13 +9,6 @@ attr_accessible :valor_transacao
 attr_accessible :data_pag_moip
 attr_accessible :data_pag_inss
 
-  def self.search(search, page)
-    paginate :per_page => 5, :page => page,
-           :conditions => ['id ?', "%#{search}%"],
-           :order => 'name'
-  end
-
-
 end
 
 

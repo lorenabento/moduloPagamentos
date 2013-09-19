@@ -1,0 +1,27 @@
+class CreatePagamentos < ActiveRecord::Migration
+  def self.up
+    create_table :pagamentos do |t|
+      t.integer :users_id, :null => false
+      t.integer :projects_id, :null => false
+      t.integer :releases_id, :null => false
+      t.string :id_transacao_moip
+      t.decimal :valor, :precision => 10, :scale => 2, :null => true
+      t.decimal :valor_transacao, :precision => 10, :scale => 2, :null => true
+      t.decimal :inss_base2, :precision => 10, :scale => 2, :null => true
+      t.decimal :inss_autonomo, :precision => 10, :scale => 2, :null => true
+      t.date :data_pag_moip
+      t.date :data_pag_inss
+      t.date :ano_base_aliq
+      t.timestamps
+    end
+
+  execute "ALTER TABLE pagamentos ADD CONSTRAINT fk_pagamentos_releases FOREIGN KEY (projects_id) REFERENCES projects(id)"
+  execute "ALTER TABLE pagamentos ADD CONSTRAINT fk_pagamentos_users FOREIGN KEY (users_id) REFERENCES users(id)"
+  end
+
+  def self.down
+    drop_table :pagamentos
+  end
+
+
+end

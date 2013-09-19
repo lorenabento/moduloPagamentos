@@ -29,7 +29,7 @@ class PagamentosController < ApplicationController
 
   # DELETE /exemplos/1.json
   def destroy
-    @pagamento = Pagamentos.find(params[:id])
+    @pagamento = Pagamento.find(params[:id])
     @pagamento.destroy
     
     respond_to do |format|
@@ -42,7 +42,7 @@ class PagamentosController < ApplicationController
   # GET /exemplos/1
   # GET /exemplos/1.json
   def salvar
-    @pagamento = Pagamentos.find(params[:id])
+    @pagamento = Pagamento.find(params[:id])
     # valores recebidos por parâmetro
     @pagamento.id_transacao_moip = params[:idmoip]
     @pagamento.data_pag_moip = params[:datapag]
@@ -79,7 +79,7 @@ class PagamentosController < ApplicationController
 	end
 
     # id do pagamento a ser calculado
-    @pagamento = Pagamentos.find(params[:id])
+    @pagamento = Pagamento.find(params[:id])
     
     # cálculos dos valores referentes ao inss ativo
     @inss_autonomo = @pagamento.valor_transacao * @empregado_perc/100
