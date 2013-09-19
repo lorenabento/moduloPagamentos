@@ -1,6 +1,0 @@
-<h1>Editing pagamentos</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @pagamento %> |
-<%= link_to 'Back', pagamentos_path %>
